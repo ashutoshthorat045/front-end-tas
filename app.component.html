@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row justify-content-center pt-5">
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="ash">
+                <div class="ash2 ">
+                    <h3>Registration Form</h3>
+                </div><br>
+                <form name="myForm" (ngSubmit)="frm.form.valid && onSubmitForm(frm)" #frm="ngForm">
+                    <div class="form-group pt-2">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="fname" #fname="ngModel" ngModel>
+
+                    </div><br>
+
+                    <div class="form-group">
+                        <label>Middal Name</label>
+                        <input type="text" class="form-control" name="mname" #mname="ngModel" ngModel>
+
+                    </div><br>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" #lname="ngModel" ngModel>
+
+                    </div><br>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="Email" #email="ngModel" ngModel required [ngClass]="{'is-invalid':frm.submitted && email.invalid}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <div class="invalid-feedback" *ngIf="frm.submitted && email.invalid">
+                            <div *ngIf="email.errors?.required">email is required</div>
+                            <div *ngIf="email.errors?.pattern">Please enter the valid mail id</div>
+
+                        </div>
+
+
+
+                    </div><br>
+                    <div class="form-group ">
+                        <label>Select Course</label>
+                        <select class="form-control" name="course" #course="ngModel" ngModel>
+  <option *ngFor="let course of courses">{{course}}</option>
+
+</select>
+                    </div><br>
+                    <div class="form-group">
+                        <label>Gender</label><br>
+                        <input type="radio" name="gender" value="male" #gender="ngModel" ngModel>
+                        <label for="male">male</label>
+                        <input type="radio" name="gender" value="female" #gender="ngModel" ngModel>
+                        <label for="female">female</label>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="pass" #pass="ngModel" ngModel required [ngClass]="{'is-invalid':frm.submitted&&pass.invalid}" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
+
+                        <div *ngIf="frm.submitted && pass.invalid" class="invalid-feedback">
+                            <div *ngIf="pass.errors?.required">password is requird</div>
+                            <div *ngIf="pass.errors?.pattern">minimum 6 char,at least 1num and at least 1captial letter valid</div>
+                        </div>
+
+
+                    </div><br>
+                    <div class="form-group">
+                        <label>confirm Password</label>
+                        <input type="password" class="form-control" name="cpass" #cpass="ngModel" ngModel required [ngClass]="{'is-invalid':frm.submitted&&pass.invalid}" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
+
+                        <div *ngIf="frm.submitted && pass.invalid" class="invalid-feedback">
+                            <div *ngIf="pass.errors?.required">password is requird</div>
+                            <div *ngIf="pass.errors?.pattern">minimum 6 char,at least 1num and at least 1captial letter valid</div>
+                        </div>
+
+
+                    </div><br>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
